@@ -36,5 +36,13 @@ jobs:
     needs: [ build,test ]
     runs-on: ubuntu-latest
     steps:
+      - name: Get build artifcats
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-file
+      - name: Output contents
+        run: |
+          pwd
+          ls -lrt
       - name: deploy
         run: echo "deploying....."
